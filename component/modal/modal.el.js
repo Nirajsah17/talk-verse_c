@@ -5,6 +5,12 @@ function define(o) {
       this.options = o || {};
       this.attachShadow({ mode: 'open' });
       this.shadowRoot.innerHTML = `
+      <style>
+      h1{
+        background-color: red;
+        font-size: 20px;
+      }
+      </style>
             <h1>Modal Element</h1>
             `;
     }
@@ -22,7 +28,7 @@ class ModalWrapper {
   constructor(o) {
     this._options = o || {};
   }
-
+  
   init(o) {
     //  Extend the options {o}
     // this.extends(o, this.options);

@@ -6,7 +6,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   mode: 'production',
   entry: {
-    'vyzor.bundle.js': [path.resolve(__dirname, 'src/index.js')]
+    'talk.bundle.js': [path.resolve(__dirname, 'src/index.js')]
   },
   output: {
     filename: '[name]',

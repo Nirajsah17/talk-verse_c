@@ -27,7 +27,8 @@
     "assets/"
   ],
   "scripts": {
-    "build:dev": "webpack --mode='development' --config webpack.config.cjs"
+    "build:dev": "webpack --mode='development' --config webpack.config.cjs",
+    "build:prod": "webpack --mode='production' --config webpack.config.cjs"
   },
   "readmeFilename": "README.md",
   "keywords": [],

@@ -1,10 +1,12 @@
-import { ModalWrapper } from "../component/modal.el.js";
+import { ModalWrapper } from "../component/modal/modal.el.js";
 import { AppWrapper } from "./app.el.js";
 
 const componentList = {
     "ModalWrapper": ModalWrapper,
     "AppWrapper": AppWrapper
 }
+
+
 
 class Application {
     constructor() {
@@ -17,7 +19,8 @@ class Application {
         // Have to think about runtime state and confuguration update either through json file or javascript object.
         const components = Object.keys(componentList);
         components.forEach(component=>{
-            componentList[component].init({});
+            const componentInstance = new componentList[component]();
+            componentInstance.init({});
         })
     }
 }

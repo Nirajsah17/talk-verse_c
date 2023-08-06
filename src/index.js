@@ -9,6 +9,7 @@ const nameSpaces = {
 
 function initailizeApp(){
     window['apps'] = new Application({});
+    window['apps'].init({});
     window['metaInfo'] = nameSpaces.__metaInfo
     window['bundleInfo'] = nameSpaces.__bundleInfo
 }

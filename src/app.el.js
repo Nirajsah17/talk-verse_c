@@ -6,7 +6,7 @@ function define(o) {
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.innerHTML = `
               <h1>Apps</h1>
-              <ts-modal>
+              <tv-modal>
               `;
       }
   
