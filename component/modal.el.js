@@ -25,12 +25,13 @@ class ModalWrapper {
 
   init(o) {
     //  Extend the options {o}
-    this.extends(o, this.options)
+    // this.extends(o, this.options);
     const _define = define(o);
-    const _name = 'tv-modal'
+    const _name = 'tv-modal';
     customElements.define(_name, _define);
   }
   extends(o, options) {
     console.log({ o, options });
   }
 }
+export { ModalWrapper }
