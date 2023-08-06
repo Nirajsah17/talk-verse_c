@@ -1,12 +1,50 @@
 {
   "name": "talk-verse_c",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "version": "0.0.0",
+  "description": "talk-verse_c",
+  "author": "Niraj Kumar <nirajnsp5@gmail.com> Pallawi Sharma <chikupallawi98@gmail.com>",
+  "contributors": [
+    "pallawi",
+    "niraj"
+  ],
+  "main": "src/index.js",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./src/index.js"
+    }
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "files": [
+    "LICENSE",
+    "README.md",
+    "install.sh",
+    "build.sh",
+    "webpack.config.cjs",
+    "index.js",
+    "index.html",
+    "src/",
+    "data/",
+    "assets/"
+  ],
+  "scripts": {
+    "test": "node tests/index.js",
+    "test:cli": "mocha"
+  },
+  "readmeFilename": "README.md",
+  "keywords": [
+  ],
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nirajsah17/talk-verse_c.git"
+  },
+  "homepage": "",
+  "bugs": {},
+  "devDependencies": {
+  },
+  "engines": {
+    "node": ">= v12.16.2"
+  },
+  "dependencies": {
+  }
 }
