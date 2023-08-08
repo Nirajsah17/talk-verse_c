@@ -1,0 +1,7 @@
+{
+  "name": "main",
+  "components": {
+    "ModalWrapper": "modal.json",
+    "NavWrapper": "nav.json"
+  }
+}

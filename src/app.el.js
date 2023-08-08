@@ -1,15 +1,21 @@
+import getTemplate from './app.template.js';
+
 function define(o) {
     class App extends HTMLElement {
       constructor() {
         super();
         this.options = o || {};
-        this.attachShadow({ mode: 'open' });
-        this.shadowRoot.innerHTML = `
-              <h1>Apps</h1>
-              <tv-modal>
-              `;
+       this.hydrateUI(this.options);
       }
-  
+   hydrateUI(options) {
+     let template =
+       (o.getTemplate && o.getTemplate(options)) || getTemplate(options);
+     this.attachShadow({
+       mode: 'open'
+     });
+     this.shadowRoot.appendChild(template.content.cloneNode(true));
+
+   }
       connectedCallback() {
   
       }

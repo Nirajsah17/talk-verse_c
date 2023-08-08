@@ -9,6 +9,20 @@ tags: todo, work-updates
 
 # TODO
 
+## 08-AUG-2023
+
+* To be fix style build
+* Configure `tailwind.css`
+* Create `EventBus`
+* Fetch components json and pass it in `init`
+
+
+## 07-AUG-2023
+
+* Restructure components creation
+* Restructure components folder structure
+
+
 ## 06-AUG-2023
 
 * To be fix style build
@@ -17,4 +31,8 @@ tags: todo, work-updates
 * Create `EventBus`
 * State management (reactive properties)
 * Icons
+
+## bin list
+
 * favicon
+* Constructable style sheet
