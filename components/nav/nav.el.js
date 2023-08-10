@@ -6,7 +6,6 @@ function define(o) {
       super();
       this.options = o || {};
       this.eventBus = o.eventBus;
-      console.log(this.options);
       this.hydrateUI(this.options);
     }
 
@@ -47,7 +46,7 @@ class NavWrapper {
       eventBus: o.eventBus,
     };
 
-    this._extend(o, this._options);
+    // this._extend(o, this._options);
     this._prefix = this._options.prefix || 'hx-';
     this._options._name = this._prefix + this._options.name;
     this._options._dispatchEvents = ((o, name) => {

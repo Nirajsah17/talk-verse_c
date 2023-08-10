@@ -8,8 +8,7 @@ function define(o) {
        this.hydrateUI(this.options);
       }
    hydrateUI(options) {
-     let template =
-       (o.getTemplate && o.getTemplate(options)) || getTemplate(options);
+     let template = getTemplate(options);
      this.attachShadow({
        mode: 'open'
      });
@@ -31,8 +30,9 @@ function define(o) {
     }
   
     init(o) {
+      console.log(o);
       //  Extend the options {o}
-      this.extends(o, this.options)
+      // this.extends(o, this.options)
       const _define = define(o);
       const _name = 'app-modal'
       customElements.define(_name, _define);

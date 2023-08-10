@@ -6,7 +6,6 @@ function define(o) {
       super();
       this.options = o || {};
       this.eventBus = o.eventBus;
-      console.log(this.options);
       this.hydrateUI(this.options);
     }
 
@@ -71,6 +70,7 @@ class ModalWrapper {
     for (const prop in o) {
       if (typeof o[prop] !== 'undefined') {
         _options[prop] = o[prop];
+        console.log(_options[prop]);
       }
     }
   }
