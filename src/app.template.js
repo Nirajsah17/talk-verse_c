@@ -3,11 +3,8 @@ function getTemplate(o) {
   const theme = o.theme || "default";
   const stylePath = o.stylePath || "./_style.css";
   let templateString = `
-  <div class="bg-blue-500">
-    App template
-    <tv-modal></tv-modal>
-    <tv-nav></tv-nav>
-    </div>
+  <tv-nav></tv-nav>
+  <tv-modal></tv-modal>
   `;
 
   templateString = addStyle(templateString, stylePath);

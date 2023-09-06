@@ -5,6 +5,7 @@ function define(o) {
     constructor() {
       super();
       this.options = o || {};
+      this._domIds = null;
       this.eventBus = o.eventBus;
       this.hydrateUI(this.options);
     }
@@ -16,13 +17,23 @@ function define(o) {
         mode: 'open'
       });
       this.shadowRoot.appendChild(template.content.cloneNode(true));
-    
-      const button = this.shadowRoot.querySelector("#button");
-      button.addEventListener('click', () => {
-        console.log("click");
-        this.eventBus.emit("click-event", {data: "1234"});
+      this._domIds = this.getDomIds();
+      this.addEvents();
+    }
+
+    getDomIds(){
+      let domIds = {};
+      domIds.signUp = this.shadowRoot.querySelector(`#${this.options.domIds['signUp']}`);
+      return domIds;
+    }
+
+    addEvents(){
+      this._domIds.signUp.addEventListener("click",(e)=>{
+        console.log(this.options.dispatchEvents['openModal']);
+        this.eventBus.emit(this.options.dispatchEvents['openModal'], {});
       })
     }
+
     connectedCallback() {
     
     }
@@ -40,8 +51,12 @@ class NavWrapper {
       name: 'nav',
       prefix: 'tv-',
       stylePath: '',
-      domIds: {},
-      dispatchEvents: {},
+      domIds: {
+        signUp: 'sign-up'
+      },
+      dispatchEvents: {
+        openModal: "open-modal"
+      },
       listenEvents: {},
       eventBus: o.eventBus,
     };
