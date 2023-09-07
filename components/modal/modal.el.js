@@ -5,6 +5,7 @@ function define(o) {
     constructor() {
       super();
       this.options = o || {};
+      this._domIds = null
       this.eventBus = o.eventBus;
       this.hydrateUI(this.options);
     }
@@ -16,13 +17,33 @@ function define(o) {
         mode: 'open'
       });
       this.shadowRoot.appendChild(template.content.cloneNode(true));
-      this.eventBus.on("click-event", (e) => {
-        console.log(e.detail.data);
+        this.eventBus.on("click-event", (e) => {
+          console.log(e.detail.data);
+        });
+        this._domIds = this.getDomIds();
+        this.addEvents();
+    }
+
+    getDomIds(){
+      let domIds = {};
+      domIds.closeModal = this.shadowRoot.querySelector(`#${this.options.domIds['cross']}`);
+      domIds.container = this.shadowRoot.querySelector(`#${this.options.domIds['container']}`);
+      return domIds;
+    }
+
+    addEvents(){
+      this._domIds.closeModal.addEventListener("click",(e)=>{
+        this._domIds.container.classList.add("hidden");
+      });
+      this.eventBus.on("tv-nav:open-modal",(e)=>{
+        this._domIds.container.classList.remove("hidden");
       })
     }
+
     connectedCallback() {
 
     }
+
   }
   return Modal
 }
@@ -37,7 +58,10 @@ class ModalWrapper {
       name: 'modal',
       prefix: 'tv-',
       stylePath: '',
-      domIds: {},
+      domIds: {
+        cross: "close-modal",
+        container: "modal-contaiiner"
+      },
       dispatchEvents: {},
       listenEvents: {},
       eventBus: o.eventBus,

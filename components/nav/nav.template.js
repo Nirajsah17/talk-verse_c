@@ -3,17 +3,13 @@ function getTemplate(o) {
   const theme = o.theme || "default";
   const stylePath = o.stylePath || "../../src/_style.css";
   let templateString = `
-<div class="h-full w-full">
-  <div class = "w-full h-12 flex justify-between shadow-md">
-    <div>logo</div>
-    <div class="flex">
-      <div>
-        <button class="border bg-purple-400 m-2 p-1 items-center">SignIn</button>
-      </div>
-      <div>
-        <button class="border bg-purple-400 m-2 p-1 items-center">LogIn</button> 
-        </div>
-    </div>
+
+  <div class="flex flex-row h-8 w-full bg-gray-200">
+    <div>LOGO</div>
+    <div class="p-2 text-sm cursor-pointer hover:text-white hover:bg-gray-400">subtitle</div>
+    <div class="p-2 text-sm cursor-pointer hover:text-white hover:bg-gray-400">Mode</div>
+    <div class="p-2 text-sm cursor-pointer hover:text-white hover:bg-gray-400">Profile</div>
+    <div id="${o.domIds["signUp"]}" class="p-2 text-sm cursor-pointer hover:text-white hover:bg-gray-400">SignUp</div>
   </div>
 </div>
   `;

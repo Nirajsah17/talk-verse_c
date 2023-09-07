@@ -14,7 +14,7 @@ function getTemplate(o) {
     </div>
     </div>
   `;
-
+  
   templateString = addStyle(templateString, stylePath);
   const template = document.createElement('template');
   template.innerHTML = templateString;
