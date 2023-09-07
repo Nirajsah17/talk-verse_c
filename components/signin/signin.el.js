@@ -1,12 +1,18 @@
-import getTemplate from './modal.template.js';
+import getTemplate from './signin.template.js';
+import Observable from '../../lib/observable.js';
 
 function define(o) {
-  class Modal extends HTMLElement {
+  class SignIn extends HTMLElement {
     constructor() {
       super();
       this.options = o || {};
       this.eventBus = o.eventBus;
+      const state = {}
+      // const observable = new Observable(state);
+      // this._state = observable.proxy;
+
       this.hydrateUI(this.options);
+      console.log(o);
     }
 
     hydrateUI(options) {
@@ -16,25 +22,21 @@ function define(o) {
         mode: 'open'
       });
       this.shadowRoot.appendChild(template.content.cloneNode(true));
-      this.eventBus.on("click-event", (e) => {
-        console.log(e.detail.data);
-      })
     }
     connectedCallback() {
 
     }
   }
-  return Modal
+  return SignIn
 }
 
 
-// customElements.define('tv-modal', Modal);0
-class ModalWrapper {
+class SigninWrapper {
   constructor(o) {
     o = o || {};
     this._options = {
-      classtype: 'ModalWrapper',
-      name: 'modal',
+      classtype: 'SigninWrapper',
+      name: 'signin',
       prefix: 'tv-',
       stylePath: '',
       domIds: {},
@@ -42,12 +44,12 @@ class ModalWrapper {
       listenEvents: {},
       eventBus: o.eventBus,
     };
-
+    
     this._extend(o, this._options);
     this._prefix = this._options.prefix || 'tv-';
     this._options._name = this._prefix + this._options.name;
   }
-
+  
   _define(name) {
     customElements.define(name, define(this._options));
   }
@@ -79,4 +81,4 @@ class ModalWrapper {
     })
   }
 }
-export default ModalWrapper
+export default SigninWrapper;

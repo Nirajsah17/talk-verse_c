@@ -1,4 +1,5 @@
 import getTemplate from './nav.template.js';
+import Observable from '../../lib/observable.js';
 
 function define(o) {
   class Nav extends HTMLElement {
@@ -6,6 +7,24 @@ function define(o) {
       super();
       this.options = o || {};
       this.eventBus = o.eventBus;
+      const state = {
+        currentState: ''
+      }
+      const observable = new Observable(state);
+      observable.addObserver((key, value) => {
+        console.log(key, value);
+        switch (key) {
+          case 'currentState':
+            console.log('current status');
+            break;
+
+          default:
+            break;
+        }
+      })
+
+      this._state = observable.proxy;
+
       this.hydrateUI(this.options);
     }
 
@@ -16,15 +35,17 @@ function define(o) {
         mode: 'open'
       });
       this.shadowRoot.appendChild(template.content.cloneNode(true));
-    
-      const button = this.shadowRoot.querySelector("#button");
-      button.addEventListener('click', () => {
-        console.log("click");
-        this.eventBus.emit("click-event", {data: "1234"});
-      })
+
+      // const button = this.shadowRoot.querySelector("#button");
+      // button.addEventListener('click', () => {
+      //   console.log("click");
+      //   this.eventBus.emit("click-event", {
+      //     data: "1234"
+      //   });
+      // })
     }
     connectedCallback() {
-    
+
     }
   }
   return Nav
@@ -46,35 +67,9 @@ class NavWrapper {
       eventBus: o.eventBus,
     };
 
-    // this._extend(o, this._options);
-    this._prefix = this._options.prefix || 'hx-';
+    this._extend(o, this._options);
+    this._prefix = this._options.prefix || 'tv-';
     this._options._name = this._prefix + this._options.name;
-    this._options._dispatchEvents = ((o, name) => {
-      Object.keys(o).map(function (key, index) {
-        o[key] = `${name}:${o[key]}`;
-      });
-      return o;
-    })(this._options.dispatchEvents, this._options._name);
-
-    this._options._domIds = ((o, name) => {
-      Object.keys(o).map(function (k) {
-        o[k] = `${name}-${o[k]}`;
-      });
-      return o;
-    })(this._options.domIds, this._options._name);
-
-    this._el = null;
-
-    return this;
-  }
-
-  _extend(o, _options) {
-    o = o || {};
-    for (const prop in o) {
-      if (typeof o[prop] !== 'undefined') {
-        _options[prop] = o[prop];
-      }
-    }
   }
 
   _define(name) {
@@ -85,7 +80,27 @@ class NavWrapper {
     o = o || {};
     const _name = this._prefix + this._options.name;
     this._define(_name);
+    const o_keys = Object.keys(o);
+    const _options_keys = Object.keys(this._options);
+    o_keys.forEach(key => {
+      if (!_options_keys.includes(key)) {
+        if (o[key] === 'undefined') return;
+        this._options[key] = o[key]
+      }
+    })
     return this;
+  }
+
+  _extend(o, _options) {
+    o = o || {};
+    const _options_keys = Object.keys(_options);
+    const o_keys = Object.keys(o);
+    _options_keys.forEach(key => {
+      if (!o_keys.includes(key)) {
+        if (_options[key] === 'undefined') return;
+        o[key] = _options[key]
+      }
+    })
   }
 }
 export default NavWrapper;

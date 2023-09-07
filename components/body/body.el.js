@@ -1,11 +1,18 @@
-import getTemplate from './modal.template.js';
+import getTemplate from './body.template.js';
+import Observable from '../../lib/observable.js';
 
 function define(o) {
-  class Modal extends HTMLElement {
+  class Body extends HTMLElement {
     constructor() {
       super();
       this.options = o || {};
       this.eventBus = o.eventBus;
+      const state = {
+        currentState: ''
+      }
+      const observable = new Observable(state);
+      this._state = observable.proxy;
+
       this.hydrateUI(this.options);
     }
 
@@ -16,25 +23,22 @@ function define(o) {
         mode: 'open'
       });
       this.shadowRoot.appendChild(template.content.cloneNode(true));
-      this.eventBus.on("click-event", (e) => {
-        console.log(e.detail.data);
-      })
     }
     connectedCallback() {
 
     }
   }
-  return Modal
+  return Body
 }
 
 
 // customElements.define('tv-modal', Modal);0
-class ModalWrapper {
+class BodyWrapper {
   constructor(o) {
     o = o || {};
     this._options = {
-      classtype: 'ModalWrapper',
-      name: 'modal',
+      classtype: 'BodyWrapper',
+      name: 'body',
       prefix: 'tv-',
       stylePath: '',
       domIds: {},
@@ -66,7 +70,7 @@ class ModalWrapper {
     })
     return this;
   }
-  
+
   _extend(o, _options) {
     o = o || {};
     const _options_keys = Object.keys(_options);
@@ -79,4 +83,4 @@ class ModalWrapper {
     })
   }
 }
-export default ModalWrapper
+export default BodyWrapper;

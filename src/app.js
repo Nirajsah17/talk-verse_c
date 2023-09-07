@@ -1,7 +1,10 @@
 import './_style.css';
 import {
     ModalWrapper,
-    NavWrapper
+    NavWrapper,
+    BodyWrapper,
+    LoginWrapper,
+    SigninWrapper
 } from "../components/index.js";
 import {
     AppWrapper
@@ -11,7 +14,10 @@ import Events from '../lib/index.js';
 const componentList = {
     "AppWrapper": AppWrapper,
     "ModalWrapper": ModalWrapper,
-    "NavWrapper": NavWrapper
+    "NavWrapper": NavWrapper,
+    "BodyWrapper": BodyWrapper,
+    "LoginWrapper": LoginWrapper,
+    "SigninWrapper": SigninWrapper
 }
 
 class Application {

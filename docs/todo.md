@@ -9,12 +9,24 @@ tags: todo, work-updates
 
 # TODO
 
+## 13-AUG-2023
+
+* Reference [https://github.com/tancredi/fantasticon]
+* 
+## 10-AUG-2023
+
+* Fetch components json and pass it in `init`
+
+
+## 09-AUG-2023
+
+* Fetch components json and pass it in `init`
+
 ## 08-AUG-2023
 
 * To be fix style build
 * Configure `tailwind.css`
 * Create `EventBus`
-* Fetch components json and pass it in `init`
 
 
 ## 07-AUG-2023

@@ -4,20 +4,19 @@ function getTemplate(o) {
   const stylePath = o.stylePath || "../../src/_style.css";
   let templateString = `
 <div class="h-full w-full">
-  <div class = "w-full h-12 flex justify-between shadow-md">
-    <div>logo</div>
-    <div class="flex">
-      <div>
-        <button class="border bg-purple-400 m-2 p-1 items-center">SignIn</button>
-      </div>
-      <div>
-        <button class="border bg-purple-400 m-2 p-1 items-center">LogIn</button> 
-        </div>
+  <div class="bg-gray-300 h-64 w-64 items-center">
+    <div>SignIn</div>
+    <div>
+      <input type="text" placeholder="Enter emailId" />
+      <button class="bg-blue-300">OTP</button>
+    </div>
+    <div>
+      <button>Create account</button>
     </div>
   </div>
 </div>
   `;
-  
+
   templateString = addStyle(templateString, stylePath);
   const template = document.createElement('template');
   template.innerHTML = templateString;
